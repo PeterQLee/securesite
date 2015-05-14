@@ -207,5 +207,5 @@ class HandleReqs:
         camchoice=ops[3]
     """
 M=HandleReqs()
-M.writecameras("jon")
-#M.lobby()
+#M.writecameras("jon")
+ M.lobby()
