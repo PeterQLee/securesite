@@ -1,0 +1,6 @@
+#!/usr/bin/env python3
+
+import cgi
+import html
+import socket
+form=cgi.FieldStorage()

@@ -1,0 +1,55 @@
+<html>
+    <head>
+        <!-- Meta tags go here -->
+        <meta charset="utf-8">
+        <!-- Put js here -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+        <script src="writeurls.js"></script>
+        <!-- CSS goes here-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+	
+        <link rel="stylesheet" href="css/style.css">
+        <title>Remote Motion Detection</title>
+    </head>
+    <body>
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Space FooDog</a>
+                </div>
+                <div id="navbar" class="collapse navbar-collapse">
+                    
+                    </div><!--/.nav-collapse -->
+                </div>
+            </nav>
+        </div>
+        <div class="main">
+            <form action="addaddress.py" method="get">
+                <input type="radio" name="add" value="add">Add
+                <input type="radio" name="add" value="remove">Remove
+                <br>
+                <br>
+                <!-- script giving choices for camera based on cameras.txt -->
+                <script type="text/javascript" src="jquery-1.10.2.js">
+                </script>
+                <b>Cameras</b>
+                <div id="camlist"><br></div>
+                <script type="text/javascript" src="writecams.js">
+                </script>
+                <br>
+                Enter your address:<input type="textbox" name="address"><br>
+                Enter your Password:<input type="password" name="passw"><br>
+                Enter the sensitivy:<input type="textbox" name="sens"><br><br>
+                <input type="submit" class="btn btn-info" value="Submit Button">
+            </form>
+        </div>
+    </body>
+</html>

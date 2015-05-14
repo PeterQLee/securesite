@@ -1,0 +1,13 @@
+console.log("dfd")
+$.ajax({dataType:"json",url:"cameras.json",mimeType:"application/json",success:function(data) {
+    
+    var st="";
+    for (var i=0;i<data.length;i++) {
+	st+="<li id='"+data[i]+"'><a href='"+data[i]+".html'>"+ data[i]+ "</a></li>"
+	
+    }
+    console.log(st)
+    //document.write(st)
+    document.getElementById("urllist").innerHTML=st;
+    
+}});
