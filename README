@@ -1,0 +1,5 @@
+To use this server, host all of the Site files on an http server.
+Be sure to run python3 handlereq.py on a seperate job, it is essential for handling requests from your cameras
+
+In addition, you should give access to pretty much every file and directory.
+In other words, run chmod 777 * in every folder 
