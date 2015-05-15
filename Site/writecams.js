@@ -11,5 +11,7 @@ $.ajax({dataType:"json",url:"cameras.json",mimeType:"application/json",success:f
     console.log(st)
     //document.write(st)
     document.getElementById("camlist").innerHTML=st;
+    document.getElementById("camlist2").innerHTML=st;
+    
     
 }});

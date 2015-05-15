@@ -1,0 +1,74 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <!-- Meta tags go here -->
+        <meta charset="utf-8">
+        <!-- Put js here -->
+<script src="forum_files/jquery.js"></script>
+        <script src="bootstrap.js"></script>
+        <script src="writeurls.js"></script>
+        <!-- CSS goes here-->
+        <link rel="stylesheet" href="vdd/bootstrap.css">
+        <link rel="stylesheet" href="forum_files/bootstrap-theme.css">
+	
+        <link rel="stylesheet" href="forum_files/style.css">
+        <title>Remote Motion Detection</title>
+    </head>
+    <body>
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Space FooDog</a>
+                </div>
+                <div id="navbar" class="collapse navbar-collapse">
+                    
+                    </div><!--/.nav-collapse -->
+                </div>
+            </nav>
+        
+        <div class="main">
+            <form action="addaddress.py" method="post">
+                <input name="add" value="add" type="radio">Add
+                <input name="add" value="remove" type="radio">Remove
+                <br>
+                <br>
+                <!-- script giving choices for camera based on cameras.txt -->
+                <script type="text/javascript" src="forum_files/jquery-1.js">
+                </script>
+                <b>Cameras</b>
+                <div id="camlist"><br></div>
+                <script type="text/javascript" src="forum_files/writecams.js">
+                </script>
+                <br>
+                Enter your address:<input name="address" type="textbox"><br>
+                Enter the Password:<input name="passw" type="password"><br>
+                Enter the sensitivy:<input name="sens" type="textbox"><br><br>
+                <input class="btn btn-info" value="Submit Address" type="submit">
+            </form>
+        </div>
+
+	<!-- insert new stuff-->
+    <div>
+	<form action="haltcamera.py" method="post">
+	  <input name="halt" value="halt" type="radio">Halt
+	  <input name="halt" value="resume" type="radio">Resume
+	   <br>
+           <br>
+           <!-- script giving choices for camera based on cameras.txt -->
+           
+           <b>Cameras</b>
+           <div id="camlist2"><br></div>
+	   <br>
+	   Enter the Password:<input name="passw" type="password"><br>
+	   <input class="btn btn-info" value="Halt or Resume Camera" type="submit">
+        </form>
+        </div>   
+    
+
+</body></html>

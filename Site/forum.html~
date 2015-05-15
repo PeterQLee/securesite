@@ -31,8 +31,12 @@
                 </div>
             </nav>
         </div>
+	<div class="container">
+	<div class="jumbotron">
+	<div class="container">
         <div class="main">
-            <form action="addaddress.py" method="get">
+	<h2>Get notifications from a camera</h2>
+            <form action="addaddress.py" method="post">
                 <input type="radio" name="add" value="add">Add
                 <input type="radio" name="add" value="remove">Remove
                 <br>
@@ -46,10 +50,30 @@
                 </script>
                 <br>
                 Enter your address:<input type="textbox" name="address"><br>
-                Enter your Password:<input type="password" name="passw"><br>
+                Enter the Password:<input type="password" name="passw"><br>
                 Enter the sensitivy:<input type="textbox" name="sens"><br><br>
-                <input type="submit" class="btn btn-info" value="Submit Button">
+                <input type="submit" class="btn btn-info" value="Submit Address">
             </form>
         </div>
+	</div></div></div>
+	<!-- insert new stuff-->
+	<div class="container">
+	<div class="jumbotron">
+	<div class="container">
+	<h2>Halt or Resume a Camera</h2>
+	<form action="haltcamera.py" method="post">
+	  <input type="radio" name="halt" value="halt">Halt
+	  <input type="radio" name="halt" value="resume">Resume
+	   <br>
+           <br>
+           <!-- script giving choices for camera based on cameras.txt -->
+           
+           <b>Cameras</b>
+           <div id="camlist2"><br></div>
+	   <br>
+	   Enter the Password:<input type="password" name="passw"><br>
+	   <input type="submit" class="btn btn-info" value="Halt or Resume Camera">
+        </form>
+       	</div></div></div>    
     </body>
 </html>
