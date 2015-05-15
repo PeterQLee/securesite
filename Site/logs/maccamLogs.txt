@@ -1,0 +1,33 @@
+15/05/2015	18:48:04	Camera disconnected!<br>
+15/05/2015	18:47:39	resume<br>
+15/05/2015	18:47:19	halt<br>
+15/05/2015	18:46:54	halt<br>
+15/05/2015	18:46:32	Motion Detected!<br>
+15/05/2015	18:45:14	resume<br>
+15/05/2015	18:45:09	halt<br>
+15/05/2015	18:44:49	halt<br>
+15/05/2015	18:44:34	Connection Established!<br>
+15/05/2015	18:36:12	Camera disconnected!<br>
+15/05/2015	18:34:34	resume<br>
+15/05/2015	18:33:54	halt<br>
+15/05/2015	18:33:39	Connection Established!<br>
+15/05/2015	18:33:31	Camera disconnected!<br>
+15/05/2015	18:32:52	halt<br>
+15/05/2015	18:32:37	Connection Established!<br>
+15/05/2015	18:32:25	Camera disconnected!<br>
+15/05/2015	18:31:06	halt<br>
+15/05/2015	18:30:56	Connection Established!<br>
+15/05/2015	17:35:31	Camera disconnected!<br>
+15/05/2015	17:35:11halt<br>
+15/05/2015	17:34:49	Motion Detected!<br>
+15/05/2015	17:34:26	Connection Established!<br>
+15/05/2015	17:33:01	Camera disconnected!<br>
+15/05/2015	17:31:16halt<br>
+15/05/2015	17:31:16	Connection Established!<br>
+15/05/2015	17:29:26	Camera disconnected!<br>
+15/05/2015	17:29:04	Connection Established!<br>
+15/05/2015	17:26:49	Connection Established!<br>
+15/05/2015	17:24:34	Camera disconnected!<br>
+15/05/2015	17:23:30	Motion Detected!<br>
+15/05/2015	17:18:12	Motion Detected!<br>
+15/05/2015	17:17:16	Connection Established!<br>

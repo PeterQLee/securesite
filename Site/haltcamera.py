@@ -1,0 +1,23 @@
+#!/usr/bin/env python3
+
+import cgi
+import os
+
+form=cgi.FieldStorage()
+print("Content-type:text/html\n\n")
+
+print("<html><body>")
+
+halt=form["halt"].value
+passw=form["passw"].value
+camera=form["camera"].value
+
+if halt and camera and passw:
+    os.chdir("..")
+    f=open("reqs.txt","a")
+    f.write(halt+","+camera+","+passw+"\n") #to keep in the format of reqs, passw is third index
+    f.close()
+
+else:
+	print("incorrect entry")
+print("<p> Sent.</p><br><a href='index.html'>Click here</a></body></html>")

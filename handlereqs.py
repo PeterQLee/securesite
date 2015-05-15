@@ -84,11 +84,40 @@ class HandleReqs:
             #read file and spit 
                     ops=j.split(",")
                     addorremove=ops[0]
+                    if ops[0]=="halt" or ops[0]=="resume":
+                #check for halt or resume request, which will have different format
+                        print("Sending halt"+str(ops))
+                        #write halt status
+                        self.writeLog(ops[1],"\t"+ops[0])
+                        camchoice=ops[1]
+                        passw=ops[2][:len(ops[2])-1]
+                        if camchoice not in self.adddict:
+                            j=f.readline()
+                            continue
+
+
+                        self.adddict[camchoice].send(bytes(addorremove,"utf-8"))
+                        g=self.adddict[camchoice].recv(128)
+
+                        print("1")
+                        if len(g)==0:
+                            raise OSError
+                        if  not self.positiveret(g): #check for positive
+                            j=f.readline()
+                            continue
+                        print("2")
+                        self.adddict[camchoice].send(bytes(passw,"utf-8"))
+                        j=f.readline()
+                        continue
+                    if ops[0]!="add" and ops[0]!="remove":
+                        #check for shinannigans
+                        j=f.readline()
+                        continue
                     emailaddr=ops[1]
                     passw=ops[2]
                     camchoice=ops[3]
                     sens=ops[4][:len(ops[4])]
-            
+                    
                     print("Send "+str(ops))
                     if camchoice not in self.adddict:
                         j=f.readline()
@@ -104,7 +133,7 @@ class HandleReqs:
                     print(2)
                     self.adddict[camchoice].send(bytes(passw,"utf-8"))
                     
-                    if addorremove=="halt" or addorremove=="resume":continue #if switch, just stop
+                    #if addorremove=="halt" or addorremove=="resume":continue #if switch, just stop
                 
                     if not self.positiveret(self.adddict[camchoice].recv(128)): #check for positive
                         j=f.readline()
