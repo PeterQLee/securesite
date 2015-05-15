@@ -6,6 +6,7 @@ $.ajax({dataType:"json",url:"cameras.json",mimeType:"application/json",success:f
 	st+="<li id='"+data[i]+"'><a href='"+data[i]+".html'>"+ data[i]+ "</a></li>\n"
 	
     }
+    
     st+="</ul>"
     console.log(st)
     //document.write(st)
