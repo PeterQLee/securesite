@@ -36,6 +36,7 @@ class HandleReqs:
         except:
             print("stuff stopped")
         client.close()
+        self.writeLog(nm,"\tCamera disconnected!")
         del self.clientdict[nm]
     def writeLog(self,cameraName,message="\tMotion Detected!"):
         path = 'Site/logs/' + cameraName+'Logs.txt'
