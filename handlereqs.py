@@ -18,15 +18,16 @@ class HandleReqs:
         self.s=socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         
         self.s.bind(("",6000))
-        self.s.listen(5)
+        self.s.listen(10)
         self.addsock=socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.addsock.bind(("",6001))
-        self.addsock.listen(5)
+        self.addsock.listen(10)
 
     def handlealert(self,client,nm):
         try:
             while True:
                 alert=client.recv(128)
+                if len(alert)==0:break #socket has closed
                 self.writeLog(nm)
         #print alert to webdata+time +image if we're doing that
         #f=open("securesite/log","a")
@@ -34,6 +35,8 @@ class HandleReqs:
         #f.close()
         except:
             print("stuff stopped")
+        client.close()
+        del self.clientdict[nm]
     def writeLog(self,cameraName,message="\tMotion Detected!"):
         path = 'Site/logs/' + cameraName+'Logs.txt'
 
@@ -71,51 +74,61 @@ class HandleReqs:
         return False 
     def addemail(self,clientname):
         print ("sbemail")
-        while True:
-            f=open("reqs.txt","r")
+        try:
+            while True:
+                f=open("reqs.txt","r")
             
-            j=f.readline()
-            while j!="":
-            #read file and spit 
-                ops=j.split(",")
-                addorremove=ops[0]
-                emailaddr=ops[1]
-                passw=ops[2]
-                camchoice=ops[3]
-                sens=ops[4][:len(ops[4])]
-            
-                print("Send "+str(ops))
-                if camchoice not in self.adddict:
-                    j=f.readline()
-                    continue
-                print(1)
-                self.adddict[camchoice].send(bytes(addorremove,"utf-8"))
-                if  not self.positiveret(self.adddict[camchoice].recv(128)): #check for positive
-                    j=f.readline()
-                    continue
-                print(2)
-                self.adddict[camchoice].send(bytes(passw,"utf-8"))
-
-                if addorremove=="halt" or addorremove=="resume":continue #if switch, just stop
-                
-                if not self.positiveret(self.adddict[camchoice].recv(128)): #check for positive
-                    j=f.readline()
-                    continue
-                print(3)
-                self.adddict[camchoice].send(bytes(emailaddr,"utf-8"))
-                if not self.positiveret(self.adddict[camchoice].recv(128)): #check for positive
-                    j=f.readline()
-                    continue
-                print(4)
-                self.adddict[camchoice].send(bytes(sens,"utf-8"))
                 j=f.readline()
-                print("done")
-            f.close()
-            f=open("reqs.txt","w")
-            f.close()
-           
-            time.sleep(5)
+                while j!="":
+            #read file and spit 
+                    ops=j.split(",")
+                    addorremove=ops[0]
+                    emailaddr=ops[1]
+                    passw=ops[2]
+                    camchoice=ops[3]
+                    sens=ops[4][:len(ops[4])]
             
+                    print("Send "+str(ops))
+                    if camchoice not in self.adddict:
+                        j=f.readline()
+                        continue
+                    print(1)
+                    self.adddict[camchoice].send(bytes(addorremove,"utf-8"))
+                    g=self.adddict[camchoice].recv(128)
+                    if len(g)==0:
+                        raise OSError
+                    if  not self.positiveret(g): #check for positive
+                        j=f.readline()
+                        continue
+                    print(2)
+                    self.adddict[camchoice].send(bytes(passw,"utf-8"))
+                    
+                    if addorremove=="halt" or addorremove=="resume":continue #if switch, just stop
+                
+                    if not self.positiveret(self.adddict[camchoice].recv(128)): #check for positive
+                        j=f.readline()
+                        continue
+                    print(3)
+                    self.adddict[camchoice].send(bytes(emailaddr,"utf-8"))
+                    if not self.positiveret(self.adddict[camchoice].recv(128)): #check for positive
+                        j=f.readline()
+                        continue
+                    print(4)
+                    self.adddict[camchoice].send(bytes(sens,"utf-8"))
+                    j=f.readline()
+                    print("done")
+                f.close()
+                f=open("reqs.txt","w")
+                f.close()
+           
+                time.sleep(5)
+        except OSError:
+            print("closing add socket")
+            self.adddict[camchoice].close()
+            del self.adddict[camchoice]
+        except:
+            raise
+        
             
 
     def writecameras(self,camer):
@@ -177,7 +190,7 @@ class HandleReqs:
                 print("accepted!")
                 self.adddict[nm]=add
                 print ("handled "+nm)
-                names.append(nm)
+                self.names.append(nm)
                 threading.Thread(target=self.handlealert,args=(self.clientdict[nm],nm)).start()
                 threading.Thread(target=self.addemail,args=(self.adddict[nm],)).start()
                 print("threads started")
@@ -208,4 +221,4 @@ class HandleReqs:
     """
 M=HandleReqs()
 #M.writecameras("jon")
- M.lobby()
+M.lobby()
